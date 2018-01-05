@@ -6,6 +6,7 @@ RUN CGO_ENABLED=0 go get github.com/kelseyhightower/confd/...
 
 # Final Stage
 FROM alpine:latest
+WORKDIR /etc/confd
 COPY --from=build-env /go/bin/confd /usr/local/bin/confd
 
 ENTRYPOINT ["/usr/local/bin/confd"]
